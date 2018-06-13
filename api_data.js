@@ -76,6 +76,19 @@ define({ "api": [
     "name": "export_download_file",
     "version": "1.0.0",
     "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "filename",
+            "description": "<p>文件名</p> "
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
