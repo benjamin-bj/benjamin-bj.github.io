@@ -122,6 +122,25 @@
   },
   {
     "type": "get",
+    "url": "/api/common/export/stop",
+    "title": "终止导出任务",
+    "name": "export_stop",
+    "version": "1.0.0",
+    "group": "Common",
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n   msg: success",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/Api/CommonController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "get",
     "url": "api/common/customer/suggest",
     "title": "获取客户suggest",
     "name": "resume_get_list",
@@ -442,20 +461,6 @@
             "optional": true,
             "field": "filter_stage",
             "description": "<p>指标粒度，0-全国，1-管理区，2-品控经理，3-客户，4-仓</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "integer",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "integer",
-            "optional": true,
-            "field": "perpage",
-            "description": "<p>每页显示条数</p> "
           }
         ]
       }
@@ -974,20 +979,6 @@
             "optional": true,
             "field": "dp_address",
             "description": "<p>收货人地址</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": true,
-            "field": "page",
-            "description": ""
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": true,
-            "field": "perpage",
-            "description": ""
           }
         ]
       }
@@ -1680,20 +1671,6 @@
             "optional": true,
             "field": "complete_time_end",
             "description": "<p>完成结束时间</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": true,
-            "field": "page",
-            "description": ""
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": true,
-            "field": "perpage",
-            "description": ""
           }
         ]
       }
