@@ -425,7 +425,7 @@
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\nmsg: success\ninfo:\n  0:\n    \"id\": 53223234872320,  //订单id\n    \"customer_name\": \"张大屯\", //客户名称\n    \"dp_contact_name\": \"张大屯\", //收货人\n    \"dp_contact_mobile\": \"13118051602\", //收货人电话\n    \"dp_address\": \"大屯路东地铁站\", //收货人地址\n    \"dp_longitude\": \"116.417377\", //交付点经度\n    \"dp_latitude\": \"40.003841\" //交付点维度\n  1:\n   .......................",
+          "content": "code: 0\nmsg: success\ninfo:\n  0:\n    \"id\": 1,\n    \"trans_event_id\": 0,  //运力id\n    \"driver_id\": 111111, //司机id\n    \"dp_id\": 222222,  //交付点id\n    \"evaluate\": \"收货快速\", //评价\n    \"score\": 5,  //分数\n    \"created_at\": \"2018-07-06 10:06:20\",\n    \"updated_at\": \"2018-07-06 10:06:20\"\n  1:\n   .......................",
           "type": "yaml"
         }
       ]
@@ -499,7 +499,7 @@
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\nmsg: success\ninfo:\n  0:\n    \"id\": 53223234872320,  //订单id\n    \"customer_name\": \"张大屯\", //客户名称\n    \"dp_contact_name\": \"张大屯\", //收货人\n    \"dp_contact_mobile\": \"13118051602\", //收货人电话\n    \"dp_address\": \"大屯路东地铁站\", //收货人地址\n    \"dp_longitude\": \"116.417377\", //交付点经度\n    \"dp_latitude\": \"40.003841\" //交付点维度\n  1:\n   .......................",
+          "content": "code: 0\nmsg: success\ninfo:\n  \"dp_id\": \"34534223\", //交付点id\n  \"evaluate\": \"收货快速\", //评价\n  \"score\": \"5\", //分数\n  \"driver_id\": \"2067552\", 司机id\n  \"id\": 2",
           "type": "yaml"
         }
       ]
@@ -699,7 +699,7 @@
     "groupTitle": "Driver"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "api/driver/position",
     "title": "上传打点信息",
     "name": "driver_position",
@@ -815,7 +815,7 @@
     "groupTitle": "Driver"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "api/driver/report/get",
     "title": "获取上报列表(web端)",
     "name": "driver_report_get",
@@ -894,7 +894,7 @@
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\ninfo:\n    count : 1\n    list :\n          0:\n            \"id\": 1,\n            \"driver_id\": 10000,\n            \"longitude\": 12.000001,\n            \"latitude\": 13.000001,\n            \"ctime\": 1530606293,\n            \"created_at\": \"2018-07-03 16:24:53\",\n            \"updated_at\": \"2018-07-03 16:24:53\",\n            \"content_type\": 0,\n            \"word\": \"sdfdssdfsdf\",\n            \"voice_addres\": \"\"\n          1:\n          ..................\n    perpage : 20\n    page  : 1\n    totalpage: 1",
+          "content": "code: 0\ninfo:\n    count : 1\n    list :\n          0:\n            \"id\": 1,\n            \"driver_id\": 10000,  //司机id\n            \"longitude\": 12.000001, //上报时终端经度\n            \"latitude\": 13.000001,  //上报时终端维度\n            \"ctime\": 1530606293,\n            \"created_at\": \"2018-07-03 16:24:53\", //创建时间\n            \"updated_at\": \"2018-07-03 16:24:53\", //更新时间\n            \"content_type\": 0, //内容类型：0为文字，1为音频\n            \"word\": \"sdfdssdfsdf\", //文字内容\n            \"voice_addres\": \"\", //音频地址\n          1:\n          ..................\n    perpage : 20\n    page  : 1\n    totalpage: 1",
           "type": "yaml"
         }
       ]
@@ -903,7 +903,7 @@
     "groupTitle": "Driver"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "api/driver/voice/report",
     "title": "上报音频信息",
     "name": "voice_report",
@@ -970,7 +970,7 @@
     "groupTitle": "Driver"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "api/driver/word/report",
     "title": "上报文字信息",
     "name": "word_report",
