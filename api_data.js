@@ -13,7 +13,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -59,7 +59,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -153,14 +153,14 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "Integer",
-            "optional": true,
+            "optional": false,
             "field": "driver_id",
             "description": "<p>司机id</p> "
           },
           {
             "group": "Parameter",
             "type": "Integer",
-            "optional": true,
+            "optional": false,
             "field": "imei",
             "description": "<p>imei码</p> "
           }
@@ -300,6 +300,277 @@ define({ "api": [
     "groupTitle": "Common"
   },
   {
+    "type": "post",
+    "url": "api/delivery/check_in",
+    "title": "到仓签到",
+    "name": "delivery_check_in",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "trans_event_id",
+            "description": "<p>运力id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Numeric",
+            "optional": false,
+            "field": "operation_longitude",
+            "description": "<p>经度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Numeric",
+            "optional": false,
+            "field": "operation_latitude",
+            "description": "<p>纬度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "operation_ip",
+            "description": "<p>终端ip</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "device_info",
+            "description": "<p>设备信息</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n  []",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
+    "type": "post",
+    "url": "api/delivery/deliver",
+    "title": "交付点签到",
+    "name": "delivery_deliver",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "trans_event_id",
+            "description": "<p>运力id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "itid",
+            "description": "<p>派车单id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "dp_id",
+            "description": "<p>交付点id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>经度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>纬度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "gps_state",
+            "description": "<p>gps状态</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "reject_reason",
+            "description": "<p>gps状态</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "sign_status",
+            "description": "<p>妥投状态 1:妥投,2:未妥投</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n  []",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
+    "type": "post",
+    "url": "api/delivery/departure",
+    "title": "离仓",
+    "name": "delivery_departure",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "trans_event_id",
+            "description": "<p>运力id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Numeric",
+            "optional": false,
+            "field": "operation_longitude",
+            "description": "<p>经度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Numeric",
+            "optional": false,
+            "field": "operation_latitude",
+            "description": "<p>纬度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "operation_ip",
+            "description": "<p>终端ip</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "device_info",
+            "description": "<p>设备信息</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n  []",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
     "type": "get",
     "url": "/api/delivery/nextpath",
     "title": "获取下一站交付点列表",
@@ -313,7 +584,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -344,7 +615,102 @@ define({ "api": [
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\nmsg: success\ninfo:\n  0:\n    \"id\": 53223234872320,  //订单id\n    \"customer_name\": \"张大屯\", //客户名称\n    \"dp_contact_name\": \"张大屯\", //收货人\n    \"dp_contact_mobile\": \"13118051602\", //收货人电话\n    \"dp_address\": \"大屯路东地铁站\", //收货人地址\n    \"dp_longitude\": \"116.417377\", //交付点经度\n    \"dp_latitude\": \"40.003841\" //交付点维度\n  1:\n   .......................",
+          "content": "code: 0\nmsg: success\ninfo:\n  0:\n    \"id\": 53223234872320,  //订单id\n    \"it_id\": 1005705355, //派车单id\n    \"customer_name\": \"张大屯\", //客户名称\n    \"dp_contact_name\": \"张大屯\", //收货人\n    \"dp_contact_mobile\": \"13118051602\", //收货人电话\n    \"dp_address\": \"大屯路东地铁站\", //收货人地址\n    \"dp_longitude\": \"116.417377\", //交付点经度\n    \"dp_latitude\": \"40.003841\" //交付点维度\n  1:\n   .......................",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
+    "type": "post",
+    "url": "api/delivery/sign",
+    "title": "交付点签到",
+    "name": "delivery_sign",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "trans_event_id",
+            "description": "<p>运力id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "itid",
+            "description": "<p>派车单id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "dp_id",
+            "description": "<p>交付点id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>经度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>纬度</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "gps_state",
+            "description": "<p>gps状态</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n  []",
           "type": "yaml"
         }
       ]
@@ -434,7 +800,7 @@ define({ "api": [
     "groupTitle": "Delivery"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "api/delivery/evaluate/set",
     "title": "设置交付评价",
     "name": "evaluate_set",
@@ -447,7 +813,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -521,7 +887,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -567,7 +933,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -613,7 +979,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -659,7 +1025,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -712,7 +1078,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -916,7 +1282,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -983,7 +1349,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -1029,7 +1395,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "IMEI",
+            "field": "imei",
             "description": "<p>imei号</p> "
           },
           {
@@ -1059,6 +1425,112 @@ define({ "api": [
             "optional": false,
             "field": "dprice",
             "description": "<p>报价(元)</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n   []",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Task/TaskController.php",
+    "groupTitle": "Task"
+  },
+  {
+    "type": "post",
+    "url": "api/task/grab",
+    "title": "抢单",
+    "name": "task_grab",
+    "version": "1.0.0",
+    "group": "Task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "trans_task_id",
+            "description": "<p>任务id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "query_dispatch_id",
+            "description": "<p>推送id</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n   []",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Task/TaskController.php",
+    "groupTitle": "Task"
+  },
+  {
+    "type": "post",
+    "url": "api/task/grab/list",
+    "title": "抢单列表",
+    "name": "task_grab_list",
+    "version": "1.0.0",
+    "group": "Task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
           }
         ]
       }
