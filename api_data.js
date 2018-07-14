@@ -571,6 +571,52 @@ define({ "api": [
     "groupTitle": "Delivery"
   },
   {
+    "type": "post",
+    "url": "api/delivery/get_current_event",
+    "title": "获取当前运力任务",
+    "name": "delivery_get_current_event",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n  \"trans_evnet_id\": 3859439, //运力id\n  \"task_id\": 122115, //任务id\n  \"line_name\": \"dms线路2\", //线路任务名称\n  \"event_status\": 800, //运力状态code\n  \"event_status_display\": \"配送中\", //运力状态名称\n  \"work_time\": \"2018-07-14 16:30:00\", //规定到仓时间\n  \"customer_id\": 228, //客户id\n  \"customer_name\": \"精武门\", //客户名称\n  \"warehouse_id\": 4690, //仓id\n  \"warehouse_name\": \"娜娜gps1仓\", //仓名称\n  \"price\": 95.51, //单趟价格\n  \"dp_list\":\n      0:\n        \"id\": 53532472402944, //订单id\n        \"dp_contact_name\": \"精武门\", //交付点联系人\n        \"dp_contact_mobile\": \"10000000000\", //交付点电话\n        \"dp_address\": \"中国工商银行(北京四元桥支行)望京中环南路9号望京大厦内B座首层(近花家地街)\", //交付点地址\n        \"dp_longitude\": \"116.469845\", //交付点经度\n        \"dp_latitude\": \"39.986096\", //交付点纬度\n        \"sign_status\": 1, //妥投状态\n        \"order_status\": 500, //订单状态\n        \"uarrive_time\": 1531550673, //签到时间\n        \"end_send_time\": 1531550727, //妥投时间\n        \"order_num\": 1 //配送顺序\n      1：\n       .........................",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
     "type": "get",
     "url": "/api/delivery/nextpath",
     "title": "获取下一站交付点列表",
@@ -1383,6 +1429,52 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "api/task/bid/list",
+    "title": "竞价列表",
+    "name": "task_bid_list",
+    "version": "1.0.0",
+    "group": "Task",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": " code: 0\n msg: success\n info:\n    \"list\":\n       0:\n         \"id\": 133330, //任务id\n         \"adc_id\": 1, //客户所在管理区id\n         \"customer_id\": 14369, //客户id\n         \"type\": 200, //\n         \"type_display\": \"主司机\",\n         \"scene\": 100, //场景code\n         \"match_type\": 100, //任务类型code\n         \"substatus\": 1000, //任务状态code\n         \"status_display\": \"司机报价中\", //任务状态描述\n         \"job_process_status\": 2000, //报价任务状态code\n         \"requirement_city_id\": 1, //要求司机所在城市id\n         \"requirement_car_type_id\": 1, //要求车型id\n         \"work_begin_time\": \"19:15\", //要求到仓时间\n         \"onboard_date\": \"2018-07-14\", //要求首次上岗日期\n         \"customer_invoice_tax_rate\": 0.03, //发票的税率\n         \"line_name\": \"新抢单有可派无人抢10m自动转竞价无人报\", //线路任务名称\n         \"customer_city_id\": 1, //客户所在城市id\n         \"warehouse_id\": 3850, //仓id\n         \"warehouse_city\": \"北京市\", //仓所在城市id\n         \"warehouse_city_id\": 1, //仓所在城市id\n         \"warehouse_region\": \"朝阳区\", //仓所在区域\n         \"valid_bid_count\": 1, //目前有效报价个数\n         \"open_task_time\": \"2018-07-14 15:40:14\", //任务发布时间\n         \"receiving_bid_end_time\": \"2018-07-14 16:45:00\", //司机报价截止时间\n         \"evaluating_bid_end_time\": \"2018-07-14 17:15:00\", //客户选司机截止时间\n         \"work_end_time\": \"19:30\", //预计配送完成时间\n         \"distribution_point_min\": 1, //预计最少交付点个数\n         \"distribution_point_max\": 1, //预计最多交付点个数\n         \"distance_min\": 9,  //预计最多交付点个数\n         \"distance_max\": 11, //预计最多交付点个数\n         \"is_back\": 0, //是否需要回仓\n         \"is_ignore_restrict\": 1, //是否要求限行必须配送\n         \"task_duration_days\": 0, //任务持续周期，单位：天\n         \"cargo_type\": \"食材\", // 货物类型\n         \"is_need_receipt\": 0, //是否需要回单\n         \"is_req_xiaogong\": 0, //是否需要小工\n         \"is_need_tuiche\": 0, //是否需要推车\n         \"is_limit_phone\": 0, //是否禁止使用手机\n         \"is_need_go_upstairs\": 0, //是否需要上楼搬运\n         \"distribution_point_count\": 0, //保底配送点个数\n         \"handling_type_display\": \"无需搬运\", //搬运程度文字\n         \"schedule_display\":  //需要配送的日期，数字代表周几\n                     1,\n                     2,\n         \"distribution_points\": //交付点信息\n                    0：\n                      \"id\": 29872, //id\n                      \"address\": \"西门子大厦\", //地址\n                    1：\n                      ...............\n         \"time_cost\": 900, //预计花费时间，单位：分钟\n         \"have_sop_display\": \"无SOP服务\", //是否有sop服务\n         \"have_temp_ctrl\": 0, //是否需要开启温控服务\n         \"pv\": 6, //查看次数\n         \"uv\": 2, //查看人数\n       1:\n        ................................................\n    \"count\": 40,\n    \"page\": \"1\",\n    \"perpage\": \"1\"\n}",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Task/TaskController.php",
+    "groupTitle": "Task"
+  },
+  {
+    "type": "post",
     "url": "api/task/bidding",
     "title": "报价",
     "name": "task_bidding",
@@ -1539,7 +1631,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\nmsg: success\ninfo:\n   []",
+          "content": "code: 0\nmsg: success\ninfo:\n   \"page\": \"1\",\n   \"per_page\": \"5\",\n   \"total_pages\": 1,\n   \"count\": 2,\n   \"list\":\n       0:\n          \"arrival_warehouse_time\": \"23:30\", //规定到仓时间\n          \"car_type_display\":  //符合任务的车型\n                \"小面\",\n                \"平顶金杯\"\n\n          \"customer\":\n                \"customer_id\": 228, //客户id\n                \"name\": \"精武门\", //客户名称\n                \"succeed_ratio\": 0.2, //成功概率\n                \"total_score\": 5 //客户评分\n         \"dispatch\": {\n                \"dprice_total_display\": \"193.01\", //单趟价格\n                \"driver_id\": 2006919, //司机ID\n                \"driver_price_display\": \"200.00\", //标书价格\n                \"id\": 176870,\n         \"distance_max\": 37, //预计最大配送距离，单位：千米\n         \"distance_min\": 30, //预计最小配送距离，单位：千米\n         \"distribution_area\": \"北京市昌平区,配送线路: 北新桥地铁站-大屯路东地铁站-天通苑北地铁站。备注: \", //配送区域\n         \"distribution_point_max\": 3, //最多配送交付点个数\n         \"distribution_point_min\": 3, //最少配送交付点个数\n         \"is_back\": 0, //是否反仓\n         \"match_type_display\": \"抢单\", //匹配司机模式\n         \"onboard_date\": \"2018-07-11\", //上岗时间\n         \"schedule\": \"每周一二三四五六日 配送\", //配送时间规划\n         \"status_display\": \"已发布\", //任务状态\n         \"task_id\": 131538, //任务id\n         \"time_cost\": \"5小时\", //预计配送时间\n         \"type_display\": \"长期任务\", //任务类型\n         \"warehouse\":\n                \"city\": \"北京市\", //仓所在城市\n                \"location\": \"五棵松体育馆\", //仓所在具体地址\n                \"name\": \"娜娜gps1仓\", //仓名称\n                \"region\": \"朝阳区\", //仓所在区\n                \"warehouse_id\": 4690 //仓ID\n\n         \"work_begin_time\": \"23:30,不返仓\", //规定开始配送时间\n      1:\n        .............................................",
           "type": "yaml"
         }
       ]
