@@ -383,7 +383,7 @@
   {
     "type": "post",
     "url": "api/delivery/deliver",
-    "title": "交付点签到",
+    "title": "交付点妥投/未妥投",
     "name": "delivery_deliver",
     "version": "1.0.0",
     "group": "Delivery",
@@ -571,7 +571,7 @@
     "groupTitle": "Delivery"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "api/delivery/get_current_event",
     "title": "获取当前运力任务",
     "name": "delivery_get_current_event",
@@ -968,7 +968,7 @@
   {
     "type": "get",
     "url": "api/driver/config/unsign/get",
-    "title": "获取评价选项列表",
+    "title": "获取未妥投原因选项列表",
     "name": "config_unsign_get",
     "version": "1.0.0",
     "group": "Driver",
@@ -1428,7 +1428,7 @@
     "groupTitle": "Driver"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "api/task/bid/list",
     "title": "竞价列表",
     "name": "task_bid_list",
@@ -1465,7 +1465,7 @@
       "examples": [
         {
           "title": "Success Response Example",
-          "content": " code: 0\n msg: success\n info:\n    \"list\":\n       0:\n         \"id\": 133330, //任务id\n         \"adc_id\": 1, //客户所在管理区id\n         \"customer_id\": 14369, //客户id\n         \"type\": 200, //\n         \"type_display\": \"主司机\",\n         \"scene\": 100, //场景code\n         \"match_type\": 100, //任务类型code\n         \"substatus\": 1000, //任务状态code\n         \"status_display\": \"司机报价中\", //任务状态描述\n         \"job_process_status\": 2000, //报价任务状态code\n         \"requirement_city_id\": 1, //要求司机所在城市id\n         \"requirement_car_type_id\": 1, //要求车型id\n         \"work_begin_time\": \"19:15\", //要求到仓时间\n         \"onboard_date\": \"2018-07-14\", //要求首次上岗日期\n         \"customer_invoice_tax_rate\": 0.03, //发票的税率\n         \"line_name\": \"新抢单有可派无人抢10m自动转竞价无人报\", //线路任务名称\n         \"customer_city_id\": 1, //客户所在城市id\n         \"warehouse_id\": 3850, //仓id\n         \"warehouse_city\": \"北京市\", //仓所在城市id\n         \"warehouse_city_id\": 1, //仓所在城市id\n         \"warehouse_region\": \"朝阳区\", //仓所在区域\n         \"valid_bid_count\": 1, //目前有效报价个数\n         \"open_task_time\": \"2018-07-14 15:40:14\", //任务发布时间\n         \"receiving_bid_end_time\": \"2018-07-14 16:45:00\", //司机报价截止时间\n         \"evaluating_bid_end_time\": \"2018-07-14 17:15:00\", //客户选司机截止时间\n         \"work_end_time\": \"19:30\", //预计配送完成时间\n         \"distribution_point_min\": 1, //预计最少交付点个数\n         \"distribution_point_max\": 1, //预计最多交付点个数\n         \"distance_min\": 9,  //预计最多交付点个数\n         \"distance_max\": 11, //预计最多交付点个数\n         \"is_back\": 0, //是否需要回仓\n         \"is_ignore_restrict\": 1, //是否要求限行必须配送\n         \"task_duration_days\": 0, //任务持续周期，单位：天\n         \"cargo_type\": \"食材\", // 货物类型\n         \"is_need_receipt\": 0, //是否需要回单\n         \"is_req_xiaogong\": 0, //是否需要小工\n         \"is_need_tuiche\": 0, //是否需要推车\n         \"is_limit_phone\": 0, //是否禁止使用手机\n         \"is_need_go_upstairs\": 0, //是否需要上楼搬运\n         \"distribution_point_count\": 0, //保底配送点个数\n         \"handling_type_display\": \"无需搬运\", //搬运程度文字\n         \"schedule_display\":  //需要配送的日期，数字代表周几\n                     1,\n                     2,\n         \"distribution_points\": //交付点信息\n                    0：\n                      \"id\": 29872, //id\n                      \"address\": \"西门子大厦\", //地址\n                    1：\n                      ...............\n         \"time_cost\": 900, //预计花费时间，单位：分钟\n         \"have_sop_display\": \"无SOP服务\", //是否有sop服务\n         \"have_temp_ctrl\": 0, //是否需要开启温控服务\n         \"pv\": 6, //查看次数\n         \"uv\": 2, //查看人数\n       1:\n        ................................................\n    \"count\": 40,\n    \"page\": \"1\",\n    \"perpage\": \"1\"\n}",
+          "content": " code: 0\n msg: success\n info:\n    \"list\":\n       0:\n         \"id\": 133330, //任务id\n         \"adc_id\": 1, //客户所在管理区id\n         \"customer_id\": 14369, //客户id\n         \"type\": 200, //\n         \"type_display\": \"主司机\",\n         \"scene\": 100, //场景code\n         \"match_type\": 100, //任务类型code\n         \"substatus\": 1000, //任务状态code\n         \"status_display\": \"司机报价中\", //任务状态描述\n         \"job_process_status\": 2000, //报价任务状态code\n         \"requirement_city_id\": 1, //要求司机所在城市id\n         \"requirement_car_type_id\": 1, //要求车型id\n         \"work_begin_time\": \"19:15\", //要求到仓时间\n         \"onboard_date\": \"2018-07-14\", //要求首次上岗日期\n         \"distribution_area\": 北京市昌平区 //配送区域\n         \"expected_price_min\": 6000 //期望报价最小值，单位：分\n         \"expected_price_max\": 7000 //期望报价最大值，单位：分\n         \"customer_invoice_tax_rate\": 0.03, //发票的税率\n         \"line_name\": \"新抢单有可派无人抢10m自动转竞价无人报\", //线路任务名称\n         \"customer_city_id\": 1, //客户所在城市id\n         \"warehouse_id\": 3850, //仓id\n         \"warehouse_city\": \"北京市\", //仓所在城市id\n         \"warehouse_city_id\": 1, //仓所在城市id\n         \"warehouse_region\": \"朝阳区\", //仓所在区域\n         \"valid_bid_count\": 1, //目前有效报价个数\n         \"open_task_time\": \"2018-07-14 15:40:14\", //任务发布时间\n         \"receiving_bid_end_time\": \"2018-07-14 16:45:00\", //司机报价截止时间\n         \"evaluating_bid_end_time\": \"2018-07-14 17:15:00\", //客户选司机截止时间\n         \"work_end_time\": \"19:30\", //预计配送完成时间\n         \"distribution_point_min\": 1, //预计最少交付点个数\n         \"distribution_point_max\": 1, //预计最多交付点个数\n         \"distance_min\": 9,  //预计最多交付点个数\n         \"distance_max\": 11, //预计最多交付点个数\n         \"is_back\": 0, //是否需要回仓\n         \"is_ignore_restrict\": 1, //是否要求限行必须配送\n         \"task_duration_days\": 0, //任务持续周期，单位：天\n         \"cargo_type\": \"食材\", // 货物类型\n         \"is_need_receipt\": 0, //是否需要回单\n         \"is_req_xiaogong\": 0, //是否需要小工\n         \"is_need_tuiche\": 0, //是否需要推车\n         \"is_limit_phone\": 0, //是否禁止使用手机\n         \"is_need_go_upstairs\": 0, //是否需要上楼搬运\n         \"distribution_point_count\": 0, //保底配送点个数\n         \"handling_type_display\": \"无需搬运\", //搬运程度文字\n         \"schedule_display\":  //需要配送的日期，数字代表周几\n                     1,\n                     2,\n         \"distribution_points\": //交付点信息\n                    0：\n                      \"id\": 29872, //id\n                      \"address\": \"西门子大厦\", //地址\n                    1：\n                      ...............\n         \"time_cost\": 900, //预计花费时间，单位：分钟\n         \"have_sop_display\": \"无SOP服务\", //是否有sop服务\n         \"have_temp_ctrl\": 0, //是否需要开启温控服务\n         \"pv\": 6, //查看次数\n         \"uv\": 2, //查看人数\n       1:\n        ................................................\n    \"count\": 40,\n    \"page\": \"1\",\n    \"perpage\": \"1\"\n}",
           "type": "yaml"
         }
       ]
@@ -1594,7 +1594,7 @@
     "groupTitle": "Task"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "api/task/grab/list",
     "title": "抢单列表",
     "name": "task_grab_list",
