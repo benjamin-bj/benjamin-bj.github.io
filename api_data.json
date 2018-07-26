@@ -422,13 +422,6 @@
             "group": "Parameter",
             "type": "Integer",
             "optional": false,
-            "field": "type",
-            "description": "<p>类型</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": false,
             "field": "itid",
             "description": "<p>派车单id</p> "
           },
@@ -706,13 +699,6 @@
             "optional": false,
             "field": "trans_event_id",
             "description": "<p>运力id</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Integer",
-            "optional": false,
-            "field": "type",
-            "description": "<p>类型</p> "
           },
           {
             "group": "Parameter",
@@ -1164,24 +1150,10 @@
           },
           {
             "group": "Parameter",
-            "type": "Integer",
-            "optional": false,
-            "field": "loc_type",
-            "description": "<p>坐标点的采集方式</p> "
-          },
-          {
-            "group": "Parameter",
             "type": "string",
             "optional": false,
             "field": "dir",
             "description": "<p>方向</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "nlt",
-            "description": "<p>坐标点采集方式</p> "
           },
           {
             "group": "Parameter",
