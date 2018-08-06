@@ -749,7 +749,60 @@ define({ "api": [
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "code: 0\nmsg: success\ninfo:\n  \"trans_event_id\": 3859439, //运力id\n  \"task_id\": 122115, //任务id\n  \"line_name\": \"dms线路2\", //线路任务名称\n  \"event_status\": 800, //运力状态code\n  \"event_status_display\": \"配送中\", //运力状态名称\n  \"work_time\": \"2018-07-14 16:30:00\", //规定到仓时间\n  \"customer_id\": 228, //客户id\n  \"customer_name\": \"精武门\", //客户名称\n  \"warehouse_id\": 4690, //仓id\n  \"warehouse_name\": \"娜娜gps1仓\", //仓名称\n  \"price\": 95.51, //单趟价格\n  \"dp_list\":\n      0:\n        \"id\": 53532472402944, //订单id\n        \"dp_contact_name\": \"精武门\", //交付点联系人\n        \"dp_contact_mobile\": \"10000000000\", //交付点电话\n        \"dp_address\": \"中国工商银行(北京四元桥支行)望京中环南路9号望京大厦内B座首层(近花家地街)\", //交付点地址\n        \"dp_longitude\": \"116.469845\", //交付点经度\n        \"dp_latitude\": \"39.986096\", //交付点纬度\n        \"sign_status\": 1, //妥投状态\n        \"order_status\": 500, //订单状态\n        \"uarrive_time\": 1531550673, //签到时间\n        \"end_send_time\": 1531550727, //妥投时间\n        \"order_num\": 1 //配送顺序\n      1：\n       .........................",
+          "content": "code: 0\nmsg: success\ninfo:\n  \"trans_event_id\": 3859439, //运力id\n  \"task_id\": 122115, //任务id\n  \"line_name\": \"dms线路2\", //线路任务名称\n  \"event_status\": 800, //运力状态code\n  \"event_status_display\": \"配送中\", //运力状态名称\n  \"work_time\": \"2018-07-14 16:30:00\", //规定到仓时间\n  \"customer_id\": 228, //客户id\n  \"customer_name\": \"精武门\", //客户名称\n  \"warehouse_id\": 4690, //仓id\n  \"warehouse_name\": \"娜娜gps1仓\", //仓名称\n  \"price\": 95.51, //单趟价格\n  \"dp_list\":\n      0:\n        \"id\": 53532472402944, //订单id\n        \"dp_contact_name\": \"精武门\", //交付点联系人\n        \"dp_contact_mobile\": \"10000000000\", //交付点电话\n        \"dp_address\": \"中国工商银行(北京四元桥支行)望京中环南路9号望京大厦内B座首层(近花家地街)\", //交付点地址\n        \"dp_longitude\": \"116.469845\", //交付点经度\n        \"dp_latitude\": \"39.986096\", //交付点纬度\n        \"sign_status\": 1, //妥投状态\n        \"order_status\": 500, //订单状态\n        \"uarrive_time\": 1531550673, //签到时间\n        \"end_send_time\": 1531550727, //妥投时间\n        \"order_num\": 1 //配送顺序\n      1：\n       .........................\n  \"current_dp\":\n        \"id\": 53532472402944, //订单id\n        \"dp_contact_name\": \"精武门\", //交付点联系人\n        \"dp_contact_mobile\": \"10000000000\", //交付点电话\n        \"dp_address\": \"中国工商银行(北京四元桥支行)望京中环南路9号望京大厦内B座首层(近花家地街)\", //交付点地址\n        \"dp_longitude\": \"116.469845\", //交付点经度\n        \"dp_latitude\": \"39.986096\", //交付点纬度\n        \"sign_status\": 1, //妥投状态\n        \"order_status\": 500, //订单状态\n        \"uarrive_time\": 1531550673, //签到时间\n        \"end_send_time\": 1531550727, //妥投时间\n        \"order_num\": 1 //配送顺序",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Delivery/DeliveryController.php",
+    "groupTitle": "Delivery"
+  },
+  {
+    "type": "get",
+    "url": "api/delivery/get_event_list",
+    "title": "获取运力列表",
+    "name": "delivery_get_event_list",
+    "version": "1.0.0",
+    "group": "Delivery",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n 0:\n  \"id\": 3859439, //运力id\n  \"task_id\": 122115, //任务id\n  \"line_name\": \"dms线路2\", //线路任务名称\n  \"event_status\": 800, //运力状态code\n  \"event_status_display\": \"配送中\", //运力状态名称\n  \"work_time\": \"2018-07-14 16:30:00\", //规定到仓时间\n  \"customer_id\": 228, //客户id\n  \"customer_name\": \"精武门\", //客户名称\n  \"warehouse_id\": 4690, //仓id\n  \"warehouse_name\": \"娜娜gps1仓\", //仓名称\n\n1:\n   ..........................",
           "type": "yaml"
         }
       ]
