@@ -1488,6 +1488,105 @@ define({ "api": [
     "groupTitle": "Driver"
   },
   {
+    "type": "get",
+    "url": "api/driver/config/reservation/get",
+    "title": "获取明日预约时间选项",
+    "name": "reservation_get",
+    "version": "1.0.0",
+    "group": "Driver",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n   0：\n     \"code\": 0,\n     \"desc\": \"2018-08-09 全天\"\n   1：\n     \"code\": 1,\n     \"desc\": \"2018-08-09 00:00至06:00\"\n   2：\n     \"code\": 2,\n     \"desc\": \"2018-08-09 06:00至12:00\"\n   3：\n     \"code\": 3,\n     \"desc\": \"2018-08-09 12:00至18:00\"\n   4：\n     \"code\": 4,\n     \"desc\": \"2018-08-09 18:00至23:59:59\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Driver/DriverController.php",
+    "groupTitle": "Driver"
+  },
+  {
+    "type": "post",
+    "url": "api/driver/reservation/set",
+    "title": "明日预约",
+    "name": "reservation_set",
+    "version": "1.0.0",
+    "group": "Driver",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "range",
+            "description": "<p>时间段</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n    0:\n      \"driver_id\": \"2067552\", //司机ID\n      \"trans_type\": 100, //类型 100 同城配送 200 城际配送\n      \"wait_time_start\": \"2018-08-10 00:00\", //开始时间\n      \"wait_time_end\": \"2018-08-10 06:00\", //结束时间\n      \"city_id_start\": 1, //出发城市ID\n      \"city_id_end\": 1, //目的地城市ID\n      \"city_address_start\": \"北京市\", //出发地城市详细地址\n      \"city_address_end\": \"北京市\", //目的地城市详细地址\n      \"created_at\": \"2018-08-09 11:44:32\", //创建时间\n      \"updated_at\": \"2018-08-09 11:44:32\", //最后更新时间\n      \"id\": 2913\n    1:\n     ........................",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Driver/DriverController.php",
+    "groupTitle": "Driver"
+  },
+  {
     "type": "post",
     "url": "api/driver/voice/report",
     "title": "上报音频信息",
