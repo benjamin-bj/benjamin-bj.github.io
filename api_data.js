@@ -230,9 +230,9 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "api/common/push/msg",
-    "title": "通过socket推送通知消息",
-    "name": "push_msg",
+    "url": "api/common/notice/bind_device",
+    "title": "绑定手表的消息推送",
+    "name": "notice_bind_device",
     "version": "1.0.0",
     "group": "Common",
     "parameter": {
@@ -242,9 +242,101 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "type",
-            "description": "<p>推送类型</p> "
+            "field": "token",
+            "description": "<p>token</p> "
           },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "result",
+            "description": "<p>绑定结果</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n        \"发送成功\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "post",
+    "url": "api/common/notice/care",
+    "title": "关怀的消息推送",
+    "name": "notice_care",
+    "version": "1.0.0",
+    "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "special",
+            "description": "<p>特定消息区分，若关怀类别为天气 1：晴 2：多云；3：多雨；</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "care_type",
+            "description": "<p>关怀类别</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "main_content",
+            "description": "<p>摘要信息</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "detail",
+            "description": "<p>关怀详细信息</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "dispatch",
+            "description": "<p>要推送的设备</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n        \"发送成功\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "post",
+    "url": "api/common/notice/new_task",
+    "title": "推送抢单任务或者竞价任务的消息",
+    "name": "notice_new_task",
+    "version": "1.0.0",
+    "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
           {
             "group": "Parameter",
             "type": "Integer",
@@ -285,7 +377,145 @@ define({ "api": [
         }
       ]
     },
-    "filename": "app/Http/Controllers/Common/CommonController.php",
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "post",
+    "url": "api/common/notice/task_result",
+    "title": "推送抢单任务或者竞价任务结果的消息",
+    "name": "notice_task_result",
+    "version": "1.0.0",
+    "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "task_id",
+            "description": "<p>任务ID</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "task_info",
+            "description": "<p>任务信息</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>消息</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "dispatch",
+            "description": "<p>要推送的设备</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n        \"发送成功\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "post",
+    "url": "api/common/notice/traffic_report",
+    "title": "路况的消息推送",
+    "name": "notice_traffic_report",
+    "version": "1.0.0",
+    "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "report_type",
+            "description": "<p>信息类别 1：文字，2：语音文件</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>路况内容(最多50个汉字，100个字节)</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "dispatch",
+            "description": "<p>要推送的设备</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n        \"发送成功\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
+    "groupTitle": "Common"
+  },
+  {
+    "type": "post",
+    "url": "api/common/notice/unbind_device",
+    "title": "解绑手表的消息推送",
+    "name": "notice_unbind_device",
+    "version": "1.0.0",
+    "group": "Common",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "unbind",
+            "description": "<p>解除绑定</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "dispatch",
+            "description": "<p>要推送的设备</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\ninfo:\n        \"发送成功\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Common/NoticeController.php",
     "groupTitle": "Common"
   },
   {
@@ -1237,6 +1467,52 @@ define({ "api": [
         {
           "title": "Success Response Example",
           "content": "code: 0\nmsg: success\ninfo:\n   \"accident\":\n        \"desc\": \"前方发生事故\"\n   \"check\": {\n        \"desc\": \"前方有交警检查\"",
+          "type": "yaml"
+        }
+      ]
+    },
+    "filename": "app/Http/Controllers/Driver/DriverController.php",
+    "groupTitle": "Driver"
+  },
+  {
+    "type": "get",
+    "url": "api/driver/info",
+    "title": "获取司机信息",
+    "name": "driver_info",
+    "version": "1.0.0",
+    "group": "Driver",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "imei",
+            "description": "<p>imei号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "version",
+            "description": "<p>版本号</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>(没有绑定的设备直接使用driver_id参数)</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "code: 0\nmsg: success\ninfo:\n     \"driver_name\": \"爱先生\",\n     \"biding_time\": \"7天\"",
           "type": "yaml"
         }
       ]
